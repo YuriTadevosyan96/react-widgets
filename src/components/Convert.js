@@ -9,24 +9,20 @@ function Convert({ language, text }) {
 
   useEffect(() => {
     const doTranslation = async () => {
-      try {
-        const { data } = await axios.post(
-          'https://translation.googleapis.com/language/translate/v2',
-          {},
-          {
-            params: {
-              q: text,
-              target: language.value,
-              key: KEY,
-            },
-            // eslint-disable-next-line comma-dangle
-          }
-        );
+      const { data } = await axios.post(
+        'https://translation.googleapis.com/language/translate/v2',
+        {},
+        {
+          params: {
+            q: debouncedText,
+            target: language.value,
+            key: KEY,
+          },
+          // eslint-disable-next-line comma-dangle
+        }
+      );
 
-        setTranslated(data.data.translations[0].translatedText);
-      } catch (error) {
-        console.error(error);
-      }
+      setTranslated(data.data.translations[0].translatedText);
     };
 
     doTranslation();

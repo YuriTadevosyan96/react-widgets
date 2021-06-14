@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 export const CurrentUrlContext = React.createContext();
 
 function Router({ children }) {
-  const [url, setUrl] = useState('/');
+  const [url, setUrl] = useState(window.location.pathname);
 
   useEffect(() => {
     const onUrlChange = () => {

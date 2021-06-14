@@ -18,7 +18,7 @@ function Accordion({ items }) {
           <i className="dropdown icon" />
           {item.title}
         </div>
-        <div className={`content ${active}}`}>
+        <div className={`content ${active}`}>
           <p>{item.content}</p>
         </div>
       </React.Fragment>
